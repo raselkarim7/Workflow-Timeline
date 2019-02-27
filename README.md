@@ -2,11 +2,7 @@
   Like a daily diary. 
 ## Features
 ```
-Hot Module Replacement
-Style setup using 'css-loader', 'style-loader'
-Bootstrap
-Redux promise added in middleware of config/store.js
-Redux Form added in root reducer.
+
 ```
 ## Installation  
 Install node js (https://nodejs.org/en/)
