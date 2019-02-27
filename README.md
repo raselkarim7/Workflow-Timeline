@@ -1,5 +1,5 @@
-# Very Basic React Js Project Setup
-  Very Basic Setup, Use it for any kind of large development. 
+# Workflow Timeline Setup
+  Like a daily diary. 
 ## Features
 ```
 Hot Module Replacement
