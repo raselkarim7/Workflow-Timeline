@@ -13,7 +13,6 @@ import { ROOT_URL } from '../../actions/index';
 class View extends Component {
     constructor(props) {
         super(props);
-        
         this.state = { 
             employees: ['Awon', 'Rasel', 'Tanay'],
             months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -24,7 +23,7 @@ class View extends Component {
          };
     }
     componentDidMount() {
-        axios.get(`${ROOT_URL}api/getfilesofamonth?month=May&year=2019`)
+        axios.get(`${ROOT_URL}api/getfilesofamonth?month=Mar&year=2019`)
         .then(response => {
           console.log('Success ==== ', response);
           this.setState({ markdownString: response.data });
