@@ -48,6 +48,7 @@ class Write extends Component {
             } 
         });
         request.then(response => {
+            alert('Data Saved Successfully');
             console.log('Saveed File Response', response);
         }).catch(error => {
             console.log('File saving Error..', error.response);
