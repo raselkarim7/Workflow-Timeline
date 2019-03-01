@@ -16,11 +16,15 @@ class View extends Component {
         
         this.state = { 
             employees: ['Awon', 'Rasel', 'Tanay'],
+            months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            years: ['2019', '2020', '2021'],
+            selectedMonth: 'Mar', 
+            selectedYear: '2019',
             markdownString: ''
          };
     }
     componentDidMount() {
-        axios.get(`${ROOT_URL}api/getfilesofamonth`)
+        axios.get(`${ROOT_URL}api/getfilesofamonth?month=May&year=2019`)
         .then(response => {
           console.log('Success ==== ', response);
           this.setState({ markdownString: response.data });

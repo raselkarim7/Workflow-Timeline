@@ -7,6 +7,7 @@ class Workflow extends Component {
         super(props);
         this.state = { view: false, write: true };
         this.handleBtnSelect = this.handleBtnSelect.bind(this);
+        this.gotoViewPage = this.gotoViewPage.bind(this);
     }
     handleBtnSelect(e) {
         console.log(e.target.name);
@@ -15,6 +16,9 @@ class Workflow extends Component {
         } else {
             this.setState({ view: false, write: true });
         }
+    }
+    gotoViewPage() {
+        this.setState({ view: true, write: false });
     }
     render() {
         console.log('this.state.view = ', this.state.view, 'this.state.write = ', this.state.write);
@@ -48,7 +52,7 @@ class Workflow extends Component {
 
                 {
                     (this.state.write) && 
-                    <Write />
+                    <Write gotoViewPage={this.gotoViewPage}/>
                 }
 
 
