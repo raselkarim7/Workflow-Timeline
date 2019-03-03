@@ -1,18 +1,36 @@
-.pre-tag-text-field {
-  margin-left: 5%;
+.first_month {
+
+}
+
+.second_day {
+
+}
+
+.third_files_ofaday {
+  margin-left: 2%;
+}
+.fourth_1 {
+
+}
+.fourth_2 {
+
+}
+.fourth_3 {
+
+}
+.fifth_files_ofaday_bypreson {
+
+}
+.sixth_time {
+  color: blue;
+}
+
+.seventh_pretag_textfield {
+  margin-left: 3%;
   padding: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   background:#F6F8FA;
   border-radius: 5px;
-  border: 1px solid rgb(220, 221, 223);
-}
-
-.pre-tag-text-field > code {
-  color: rgb(90, 78, 250);
-}
-
-summary > .filename {
-  color: rgb(18, 192, 163);
-  font-weight: 600;
+  border: 1px solid rgb(9, 70, 141);
 }
