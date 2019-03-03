@@ -5,7 +5,7 @@ import Write from './Write';
 class Workflow extends Component {
     constructor(props) {
         super(props);
-        this.state = { view: false, write: true };
+        this.state = { view: true, write: false };
         this.handleBtnSelect = this.handleBtnSelect.bind(this);
         this.gotoViewPage = this.gotoViewPage.bind(this);
     }
