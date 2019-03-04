@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import ReactMarkDown from 'react-markdown';
 import axios from 'axios';
-import _ from 'lodash';
-//import Blob from 'blob';
-//import documentMD from './document.md'; 
 
 import { ROOT_URL } from '../actions/index';
 
@@ -12,7 +8,7 @@ class Home extends Component {
     super(props);
     this.state = { 
       employees: ['Awon', 'Rasel', 'Tanay'],
-      markdownString: '# This is the heading. \n ``` once upon a time```\n\n ```  cout<<"hello world"<<endl```',
+      markdownString: '# This is the heading. ',
       };
     this.handleSelectEmployee = this.handleSelectEmployee.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
