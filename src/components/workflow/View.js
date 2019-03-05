@@ -1,36 +1,28 @@
 import React, { Component } from 'react';
-
-// import axios from 'axios';
 import renderHTML from 'react-render-html';
 import { connect } from 'react-redux'; 
 
-//import { ROOT_URL } from '../../actions/index';
-import { getFilesOfAMonth } from '../../actions/files';
+import { getFilesOfAMonth, getServerDate } from '../../actions/files';
 import FilterBy from './FilterBy';
 
 class View extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            employees: ['Awon', 'Rasel', 'Tanay'],
-            months: [
-                'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-            ],
-            years: ['2019', '2020', '2021'],
-            selectedMonth: '', 
-            selectedYear: '',
-            markdownString: ''
+            employees: ['Awon', 'Rasel', 'Tanay'], 
          };
     }
 
     componentWillMount() {
-        this.props.getFilesOfAMonth('Mar', 2019);   
+        const request = this.props.getServerDate(); 
+        request.then(response => {
+            const serverDate = response.payload.data;
+            this.props.getFilesOfAMonth(serverDate.month, serverDate.year);
+        }).catch(error => console.log(error.response));
     }
 
 
     render() {
-        console.log(this.props.outputFileText);
         if (!this.props.outputFileText) {
             return <span>Loading...</span>;
         }
@@ -51,8 +43,8 @@ class View extends Component {
 
 function mapStateToProps(state) {
     return { 
-        outputFileText: state.file.outputFileText 
+        outputFileText: state.file.outputFileText,
     };
 }
 
-export default connect(mapStateToProps, { getFilesOfAMonth })(View);
+export default connect(mapStateToProps, { getFilesOfAMonth, getServerDate })(View);
