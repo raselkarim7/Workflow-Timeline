@@ -11,7 +11,7 @@ class Write extends Component {
         this.state = { 
             selectOptionWarning: false,
             textareaWarning: false, 
-            employees: ['Awon', 'Rasel', 'Tanay', 'Twaha', 'Arif', 'Shawon', 
+            employees: ['Awon', 'Tanay', 'Twaha', 'Arif', 'Shawon', 
                         'Manirul', 'Reza', 'Riazul', 'Shamim', 'Palash', 'Zobair', 'Avijit' ],
             selectedEmployee: '',
             writtentext: '',
