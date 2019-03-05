@@ -11,7 +11,8 @@ class Write extends Component {
         this.state = { 
             selectOptionWarning: false,
             textareaWarning: false, 
-            employees: ['Awon', 'Rasel', 'Tanay', 'Reza'],
+            employees: ['Awon', 'Rasel', 'Tanay', 'Twaha', 'Arif', 'Shawon', 
+                        'Manirul', 'Reza', 'Riazul', 'Shamim', 'Palash', 'Zobair', 'Avijit' ],
             selectedEmployee: '',
             writtentext: '',
         };
@@ -73,7 +74,7 @@ class Write extends Component {
                     >
                         <option value="">Select Employee</option>
                         {
-                        _.map(this.state.employees, employee => 
+                        _.map(this.state.employees.sort(), employee => 
                             <option key={employee} value={employee}>{employee}</option>
                         )
                         }

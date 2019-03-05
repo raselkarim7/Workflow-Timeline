@@ -6,12 +6,6 @@ import { getFilesOfAMonth, getFilesOfADay, getServerDate } from '../../actions/f
 import FilterBy from './FilterBy';
 
 class View extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            employees: ['Awon', 'Rasel', 'Tanay'], 
-         };
-    }
 
     componentWillMount() {
         const request = this.props.getServerDate(); 
