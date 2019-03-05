@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { ROOT_URL } from '../../actions/index';
+import { getFilesOfAMonth } from '../../actions/files';
 
 class Write extends Component {
     constructor(props) {
@@ -16,6 +18,10 @@ class Write extends Component {
         this.handleSelectEmployee = this.handleSelectEmployee.bind(this);
         this.handleFormChange = this.handleFormChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
+    }
+
+    componentWillMount() {
+        this.props.getFilesOfAMonth();
     }
 
     handleSelectEmployee(e) {
@@ -49,7 +55,7 @@ class Write extends Component {
         });
         request.then(response => {
             alert('Data Saved Successfully');
-            this.props.gotoViewPage();
+            this.props.gotoViewPage(this.props.server_date);
             console.log('Saveed File Response', response);
         }).catch(error => {
             console.log('File saving Error..', error.response);
@@ -105,5 +111,7 @@ class Write extends Component {
         );
     }
 }
-
-export default Write;
+function maStateToProps(state) {
+    return { server_date: state.file.server_date };
+}
+export default connect(maStateToProps, { getFilesOfAMonth })(Write);

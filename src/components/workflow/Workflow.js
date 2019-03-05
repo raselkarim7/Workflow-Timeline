@@ -5,7 +5,7 @@ import Write from './Write';
 class Workflow extends Component {
     constructor(props) {
         super(props);
-        this.state = { view: true, write: false };
+        this.state = { view: true, write: false, server_date: '' };
         this.handleBtnSelect = this.handleBtnSelect.bind(this);
         this.gotoViewPage = this.gotoViewPage.bind(this);
     }
@@ -17,8 +17,8 @@ class Workflow extends Component {
             this.setState({ view: false, write: true });
         }
     }
-    gotoViewPage() {
-        this.setState({ view: true, write: false });
+    gotoViewPage(serverDate) {
+        this.setState({ view: true, write: false, server_date: serverDate });
     }
     render() {
         console.log('this.state.view = ', this.state.view, 'this.state.write = ', this.state.write);
@@ -47,12 +47,12 @@ class Workflow extends Component {
                 </div>
                 {
                     (this.state.view) && 
-                    <View />
+                    <View server_date={this.state.server_date} />
                 }
 
                 {
                     (this.state.write) && 
-                    <Write gotoViewPage={this.gotoViewPage}/>
+                    <Write gotoViewPage={this.gotoViewPage} />
                 }
 
 

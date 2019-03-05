@@ -27,15 +27,9 @@ class Home extends Component {
   render() {
     return (
       <div className="p-4">
-
-  
         <div>
-          <ReactMarkDown 
-            source={this.state.markdownString} 
-          />
+            {this.state.markdownString} 
         </div>
-
-
       </div>
     );
   }

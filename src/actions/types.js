@@ -1,1 +1,2 @@
 export const GET_FILES_OFA_MONTH = 'GET_FILES_OFA_MONTH';
+export const GET_SERVER_DATE = 'GET_SERVER_DATE';

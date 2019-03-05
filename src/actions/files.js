@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ROOT_URL } from './index';
-import { GET_FILES_OFA_MONTH } from './types';
+import { GET_FILES_OFA_MONTH, GET_SERVER_DATE } from './types';
 
 export function getFilesOfAMonth(month, year) {
     const request = axios.get(`${ROOT_URL}api/getfilesofamonth?month=${month}&year=${year}`);
@@ -10,3 +10,10 @@ export function getFilesOfAMonth(month, year) {
     };
 }
 
+export function getServerDate() {
+    const request = axios.get(`${ROOT_URL}/api/getserverdate`);
+    return {
+        type: GET_SERVER_DATE,
+        payload: request
+    };
+}

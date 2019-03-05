@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 //import { ROOT_URL } from '../../actions/index';
 import { getFilesOfAMonth } from '../../actions/files';
-
+import FilterBy from './FilterBy';
 
 class View extends Component {
     constructor(props) {
@@ -29,12 +29,14 @@ class View extends Component {
 
 
     render() {
+        //console.log(this.props.outputFileText);
         if (!this.props.outputFileText) {
             return <span>Loading...</span>;
         }
         return (
             <div>
                 <h1 style={{ fontWeight: 'lighter' }}> View </h1>
+                <FilterBy server_date={this.props.server_date} />
                 <div>
                     { renderHTML(this.props.outputFileText)}
                 </div>
@@ -44,7 +46,9 @@ class View extends Component {
 }
 
 function mapStateToProps(state) {
-    return { outputFileText: state.file.outputFileText };
+    return { 
+        outputFileText: state.file.outputFileText 
+    };
 }
 
 export default connect(mapStateToProps, { getFilesOfAMonth })(View);
