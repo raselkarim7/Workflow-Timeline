@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import renderHTML from 'react-render-html';
 import { connect } from 'react-redux'; 
 
-import { getFilesOfAMonth, getServerDate } from '../../actions/files';
+import { getFilesOfAMonth, getFilesOfADay, getServerDate } from '../../actions/files';
 import FilterBy from './FilterBy';
 
 class View extends Component {
@@ -30,6 +30,7 @@ class View extends Component {
             <div>
                 <h1 style={{ fontWeight: 'lighter' }}> View </h1>
                 <FilterBy 
+                    getFilesOfADay={this.props.getFilesOfADay}
                     getFilesOfAMonth={this.props.getFilesOfAMonth} 
                     server_date={this.props.server_date} 
                 />
@@ -47,4 +48,5 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { getFilesOfAMonth, getServerDate })(View);
+export default connect(mapStateToProps, { 
+    getFilesOfAMonth, getFilesOfADay, getServerDate })(View);

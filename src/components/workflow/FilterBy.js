@@ -70,6 +70,8 @@ class FilterBy extends Component {
     }
     handleSelectDay(e) {
         console.log('type of day', typeof (e.target.value));
+        const day = e.target.value < 10 ? `0${e.target.value}` : e.target.value; 
+        this.props.getFilesOfADay(day, this.state.selectedMonth, this.state.selectedYear);
         this.setState({ selectedDay: e.target.value });
     }
     renderWarning() {
