@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
-import { getServerDate } from '../../actions/files';
+import { getServerDate, getFilesOfADay } from '../../actions/files';
 
 
 class FilterBy extends Component {
@@ -39,6 +39,12 @@ class FilterBy extends Component {
             const formSubmitDay = 
                 !this.props.server_date ? '' : parseInt(this.props.server_date.day, 0);
             // console.log('----- ---- ----', formSubmitDay);
+
+            if (formSubmitDay !== '') {
+                this.props.getFilesOfADay(this.props.server_date.day, month, year);
+            }
+
+
             this.setState({ 
                 selectedDay: formSubmitDay, 
                 selectedMonth: month, 
@@ -143,4 +149,4 @@ function mapStateToProps(state) {
     return {  /*server_date: state.file.server_date*/ };
 }
 
-export default connect(mapStateToProps, { getServerDate })(FilterBy);
+export default connect(mapStateToProps, { getServerDate, getFilesOfADay })(FilterBy);
