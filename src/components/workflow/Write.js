@@ -3,7 +3,7 @@ import _ from 'lodash';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { ROOT_URL } from '../../actions/index';
-import { getFilesOfAMonth } from '../../actions/files';
+import { getServerDate } from '../../actions/files';
 
 class Write extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Write extends Component {
     }
 
     componentWillMount() {
-        this.props.getFilesOfAMonth();
+        this.props.getServerDate();
     }
 
     handleSelectEmployee(e) {
@@ -114,4 +114,4 @@ class Write extends Component {
 function maStateToProps(state) {
     return { server_date: state.file.server_date };
 }
-export default connect(maStateToProps, { getFilesOfAMonth })(Write);
+export default connect(maStateToProps, { getServerDate })(Write);

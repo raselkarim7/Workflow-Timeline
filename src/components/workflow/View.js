@@ -14,11 +14,12 @@ class View extends Component {
         this.state = { 
             employees: ['Awon', 'Rasel', 'Tanay'],
             months: [
-                'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
             ],
             years: ['2019', '2020', '2021'],
-            selectedMonth: 'Mar', 
-            selectedYear: '2019',
+            selectedMonth: '', 
+            selectedYear: '',
             markdownString: ''
          };
     }
@@ -29,14 +30,17 @@ class View extends Component {
 
 
     render() {
-        //console.log(this.props.outputFileText);
+        console.log(this.props.outputFileText);
         if (!this.props.outputFileText) {
             return <span>Loading...</span>;
         }
         return (
             <div>
                 <h1 style={{ fontWeight: 'lighter' }}> View </h1>
-                <FilterBy server_date={this.props.server_date} />
+                <FilterBy 
+                    getFilesOfAMonth={this.props.getFilesOfAMonth} 
+                    server_date={this.props.server_date} 
+                />
                 <div>
                     { renderHTML(this.props.outputFileText)}
                 </div>

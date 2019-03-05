@@ -16,7 +16,7 @@ class FilterBy extends Component {
                 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
             ],
-            selectedYear: '2019',
+            selectedYear: '',
             years: ['2019', '2020', '2021'],
         };
         this.handleSelectYear = this.handleSelectYear.bind(this);
@@ -38,6 +38,7 @@ class FilterBy extends Component {
             const daysArray = Array.from({ length: noofdays }, (v, k) => `${k + 1}`);  
             const formSubmitDay = 
                 !this.props.server_date ? '' : parseInt(this.props.server_date.day, 0);
+            // console.log('----- ---- ----', formSubmitDay);
             this.setState({ 
                 selectedDay: formSubmitDay, 
                 selectedMonth: month, 
@@ -54,21 +55,38 @@ class FilterBy extends Component {
     }   
 
     handleSelectYear(e) {
-        console.log('handleSelectYear', e, e.target.value);
+        console.log('###---### FilterBy.js handleSelectYear');
+        this.props.getFilesOfAMonth('', e.target.value);
         this.setState({ selectedYear: e.target.value, selectedMonth: '', selectedDay: '' });
     }
     handleSelectMonth(e) {
-        this.setState({ selectedMonth: e.target.value, selectedDay: '' });
+        const monthNameToNum = this.state.months.findIndex(a => a === e.target.value) + 1;
+        const noofdays = this.daysInMonth(monthNameToNum, this.state.selectedYear);
+        const daysArray = Array.from({ length: noofdays }, (v, k) => `${k + 1}`);  
+        // console.log('days Array === ', daysArray, monthNameToNum, this.state.selectedYear);
+        console.log('###---### FilterBy.js handleSelectMonth');
+        this.props.getFilesOfAMonth(e.target.value, this.state.selectedYear);
+        this.setState({ selectedMonth: e.target.value, selectedDay: '', days: daysArray });
     }
     handleSelectDay(e) {
         console.log('type of day', typeof (e.target.value));
         this.setState({ selectedDay: e.target.value });
     }
+    renderWarning() {
+        return (
+            <span className="d-flex justify-content-center align-items-center">
+                <span className="alert-info text-center rounded p-1 m-1 px-2">
+                    <strong> Please: </strong> 
+                    Select Month To Load Data
+                </span>
+            </span>
+        );
+    }
     render() {
-        console.log('Filter byyyyyyyyyyyyyyyyyy ', this.state.selectedDay);
         return (
             <div className="px-5 mx-5">
-                <div className="border d-flex justify-content-between px-5 mx-5">
+                  {/* { (this.state.selectedMonth === '') && this.renderWarning() } */}
+                <div className="d-flex justify-content-between px-5 mx-5">
 
                     <div>
                         <select 
@@ -83,7 +101,7 @@ class FilterBy extends Component {
                         </select>
                     </div>
 
-                    <div>
+                    <div >
                         <select 
                             value={this.state.selectedMonth} 
                             onChange={this.handleSelectMonth}
@@ -100,6 +118,7 @@ class FilterBy extends Component {
                     }
                     <div>
                         <select 
+                            disabled={this.state.selectedMonth === ''}
                             value={this.state.selectedDay} 
                             onChange={this.handleSelectDay}
                         >
@@ -112,7 +131,6 @@ class FilterBy extends Component {
                     </div>
 
                 </div>
-
                 
             </div>
         );
